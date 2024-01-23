@@ -19,3 +19,21 @@ def keyboard_pagination(page : int=0):
     builder.adjust(2,2)
 
     return builder.as_markup()
+
+
+
+def keyboard_help(page : int=0):
+    builder = InlineKeyboardBuilder()
+    builder.row(
+        InlineKeyboardButton(text="Позвонить",callback_data=MyPagination(action = "call", page = page).pack()),
+        InlineKeyboardButton(text="Написать в Telegram", callback_data=MyPagination(action="msgtg", page=page).pack()),
+        InlineKeyboardButton(text="Написать на почту", callback_data=MyPagination(action="msgemail", page=page).pack()),
+        InlineKeyboardButton(text="Отправить файл", callback_data=MyPagination(action="fileexchange", page=page).pack()),
+
+    )
+    builder.adjust(2,2)
+
+    return builder.as_markup()
+
+
+
